@@ -1,0 +1,7 @@
+.app-header {
+  
+}
+
+.app-header > .container {
+  max-width: 500px;
+}
