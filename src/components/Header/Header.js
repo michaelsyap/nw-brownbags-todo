@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Header.css';
 
+import TodoFormContainer from 'Containers/TodoFormContainer/TodoFormContainer';
 
-class Header extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <header className="app-header">
-        <div className="container">
-          <h1>Todo Brownbags App</h1>
-        </div>
-      </header>
-    )
-  }
-}
+const Header = (props) => (
+  <header className="app-header">
+    <div className="container -app-header">
+      <nav className="navbar navbar-light bg-light">
+        <a className="navbar-brand" href="#">Todo App</a>
+        <button className="btn btn-primary float-right"> <i className="fa fa-plus"></i> Add Todo</button>
+      </nav>
+      <TodoFormContainer />
+    </div>
+  </header>
+);
 
 export default Header;
