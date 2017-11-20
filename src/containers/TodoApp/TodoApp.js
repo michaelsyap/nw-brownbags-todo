@@ -8,7 +8,35 @@ class TodoApp extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      todoItems: [
+        {
+          id: 1,
+          text: 'Buy fruits at the market',
+          status: 'pending'
+        },
+        {
+          id: 2,
+          text: 'Call mom',
+          status: 'done'
+        },
+        {
+          id: 3,
+          text: 'Finish assignment',
+          status: 'pending'
+        },
+        {
+          id: 4,
+          text: 'Wash dishes',
+          status: 'done'
+        },
+        {
+          id: 5,
+          text: 'Prepare food for tomorrow',
+          status: 'pending'
+        }
+      ]
+    };
   }
 
   render() {
