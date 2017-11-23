@@ -25,8 +25,8 @@ const TodoItem = (props) => {
         <input type="checkbox" className="checkbox"/>
       </div>
       <div className={textContainerClasses}>
-        <span className="text">Twitter</span>
-        <input type="text" className="form-control" />
+        <span className="text">{props.details.text}</span>
+        <input type="text" className="form-control" value={props.details.text} />
       </div>
       <div className="actions -todo-item">
         <button className="btn btn-danger"><i className="fa fa-trash"></i></button>

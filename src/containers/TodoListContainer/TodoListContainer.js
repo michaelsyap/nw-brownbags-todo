@@ -10,7 +10,7 @@ class TodoListContainer extends Component {
 
   render() {
     return (
-      <TodoList />
+      <TodoList todoItems={this.props.todoItems} />
     )
   }
 }

@@ -70,7 +70,7 @@ class TodoApp extends Component {
     return (
       <section className="todo-app">
         <HeaderContainer addTodo={this.addTodo} />
-        <TodoListContainer />
+        <TodoListContainer todoItems={this.state.todoItems} />
         <TodoFiltersContainer />
       </section>
     )
