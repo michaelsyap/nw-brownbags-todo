@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from 'Components/Header/Header';
+import HeaderContainer from 'Containers/HeaderContainer/HeaderContainer';
 import TodoListContainer from 'Containers/TodoListContainer/TodoListContainer';
 import TodoFiltersContainer from 'Containers/TodoFiltersContainer/TodoFiltersContainer';
 
@@ -35,14 +35,38 @@ class TodoApp extends Component {
           text: 'Prepare food for tomorrow',
           status: 'pending'
         }
-      ]
+      ],
+      visibleItems: 'ALL' //all, pending, done
     };
+
+    this.addTodo = this.addTodo.bind(this);
+    // this.toggleTodoItem = this.toggleTodoItem.bind(this);
+    // this.toggleVisibleItems = this.toggleVisibleItems.bind(this);
   }
+
+  addTodo(todo) {
+    let todoItems = [
+      ...this.state.todoItems,
+      todo
+    ];
+
+    this.setState({ todoItems });
+  }
+
+  toggleTodoItem(todo) {
+
+  }
+
+  toggleVisibleItems(visibileItems) {
+
+  }
+
+
 
   render() {
     return (
       <section className="todo-app">
-        <Header />
+        <HeaderContainer addTodo={this.addTodo} />
         <TodoListContainer />
         <TodoFiltersContainer />
       </section>
