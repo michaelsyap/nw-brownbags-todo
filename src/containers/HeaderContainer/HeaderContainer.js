@@ -6,17 +6,18 @@ class HeaderContainer extends Component {
     super(props);
 
     this.state = {
-      todoFormOpen: false
+      todoFormOpen: false,
+      todoText: ''
     };
 
     this.addTodoProxy = this.addTodoProxy.bind(this);
     this.openTodoForm = this.openTodoForm.bind(this);
   }
 
-  addTodoProxy() {
+  addTodoProxy(todoItem) {
     let todo = {
       id: Date.now(),
-      text: 'Buy fruits at the market',
+      text: todoItem.todoText,
       status: 'pending'
     };
 
@@ -34,7 +35,10 @@ class HeaderContainer extends Component {
 
   render() {
     return (
-      <Header todoFormOpen={this.state.todoFormOpen} openTodoForm={this.openTodoForm} addTodoProxy={this.addTodoProxy} />
+      <Header 
+        todoFormOpen={this.state.todoFormOpen} 
+        openTodoForm={this.openTodoForm} 
+        addTodoProxy={this.addTodoProxy} />
     )
   }
 }

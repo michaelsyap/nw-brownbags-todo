@@ -49,6 +49,9 @@ class TodoApp extends Component {
       ...this.state.todoItems,
       todo
     ];
+    
+
+    console.log(todoItems);
 
     this.setState({ todoItems });
   }

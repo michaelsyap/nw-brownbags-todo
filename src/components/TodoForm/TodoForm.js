@@ -10,9 +10,9 @@ const TodoForm = (props) => {
     <div className={formClasses}>
       <div className="card-header"><span>New Todo Item</span></div>
       <div className="card-body">
-        <form action="">
+        <form onSubmit={props.handleSubmit}>
           <div className="form-group">
-            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Reserve a table in the restaurant.." />
+            <input type="text" className="form-control" value={props.todoText} onKeyPress={props.handleKeypress} onChange={props.handleChange} aria-describedby="emailHelp" placeholder="Reserve a table in the restaurant.." />
           </div>
           <button type="submit" className="btn btn-success float-right">Submit</button>
         </form>

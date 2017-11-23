@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import classnames from 'classnames';
 
-import TodoForm from 'Components/TodoForm/TodoForm';
+import TodoFormContainer from 'Containers/TodoFormContainer/TodoFormContainer';
 
 const Header = (props) => {
 
@@ -24,7 +24,7 @@ const Header = (props) => {
             {openButtonLabel}
           </button>
         </nav>
-        <TodoForm isOpen={props.todoFormOpen} addTodoProxy={props.addTodoProxy} />
+        <TodoFormContainer todoFormOpen={props.todoFormOpen} addTodoProxy={props.addTodoProxy} />
       </div>
     </header>
   );
