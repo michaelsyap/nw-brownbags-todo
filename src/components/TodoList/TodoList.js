@@ -12,6 +12,7 @@ const TodoList = (props) => {
               details={todo}
               handleToggleTodo={props.handleToggleTodo}
               handleEditMode={props.handleEditMode}
+              editTodoText={props.editTodoText}
               onEditMode={props.onEditMode === todo.id}
                />
   })

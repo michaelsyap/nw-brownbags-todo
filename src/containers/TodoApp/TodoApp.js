@@ -41,6 +41,7 @@ class TodoApp extends Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.toggleTodoItem = this.toggleTodoItem.bind(this);
+    this.editTodoText = this.editTodoText.bind(this);
     // this.toggleVisibleItems = this.toggleVisibleItems.bind(this);
   }
 
@@ -78,6 +79,25 @@ class TodoApp extends Component {
     console.log(newTodoItems);
   }
 
+  editTodoText(newTodo) {
+    let todoIndex = this.state.todoItems.findIndex((todo) => { return todo.id === newTodo.id });
+
+    let newTodoItems = [
+      ...this.state.todoItems.slice(0, todoIndex),
+      newTodo,
+      ...this.state.todoItems.slice(todoIndex + 1)
+    ];
+    
+    this.setState({
+      todoItems: newTodoItems
+    });
+    
+    console.log(newTodoItems);
+    
+
+
+  }
+
   toggleVisibleItems(visibileItems) {
 
   }
@@ -86,7 +106,10 @@ class TodoApp extends Component {
     return (
       <section className="todo-app">
         <HeaderContainer addTodo={this.addTodo} />
-        <TodoListContainer todoItems={this.state.todoItems} toggleTodoItem={this.toggleTodoItem} />
+        <TodoListContainer 
+          todoItems={this.state.todoItems} 
+          toggleTodoItem={this.toggleTodoItem}
+          editTodoText={this.editTodoText} />
         <TodoFiltersContainer />
       </section>
     )

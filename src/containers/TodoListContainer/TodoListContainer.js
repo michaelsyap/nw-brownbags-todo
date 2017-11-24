@@ -33,6 +33,7 @@ class TodoListContainer extends Component {
     return (
       <TodoList 
         todoItems={this.props.todoItems} 
+        editTodoText={this.props.editTodoText}
         handleToggleTodo={this.handleToggleTodo} 
         onEditMode={this.state.onEditMode}  
         handleEditMode={this.handleEditMode}

@@ -33,6 +33,14 @@ class TodoItemContainer extends Component {
 
     if(e.keyCode === 13) {
       console.log('Save');
+
+      this.props.editTodoText({
+        ...this.props.details,
+        text: e.target.value
+      });
+
+     this.props.handleEditMode();
+
     } else if (e.keyCode === 27) {
 
       this.handleEditBlur();
@@ -46,7 +54,6 @@ class TodoItemContainer extends Component {
     });
 
   }
-
 
   handleEditBlur(e) {
 
