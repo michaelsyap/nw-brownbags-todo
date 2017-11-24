@@ -13,41 +13,41 @@ class TodoApp extends Component {
         {
           id: 1,
           text: 'Buy fruits at the market',
-          status: 'pending'
+          done: false
         },
         {
           id: 2,
           text: 'Call mom',
-          status: 'done'
+          status: false
         },
         {
           id: 3,
           text: 'Finish assignment',
-          status: 'pending'
+          done: true
         },
         {
           id: 4,
           text: 'Wash dishes',
-          status: 'done'
+          status: false
         },
         {
           id: 5,
           text: 'Prepare food for tomorrow',
-          status: 'pending'
+          done: false
         }
       ],
       visibleItems: 'ALL' //all, pending, done
     };
 
     this.addTodo = this.addTodo.bind(this);
-    // this.toggleTodoItem = this.toggleTodoItem.bind(this);
+    this.toggleTodoItem = this.toggleTodoItem.bind(this);
     // this.toggleVisibleItems = this.toggleVisibleItems.bind(this);
   }
 
   addTodo(todo) {
     let todoItems = [
-      ...this.state.todoItems,
-      todo
+      todo,
+      ...this.state.todoItems
     ];
     
 
@@ -56,21 +56,37 @@ class TodoApp extends Component {
     this.setState({ todoItems });
   }
 
-  toggleTodoItem(todo) {
+  toggleTodoItem(id) {
+    let todoIndex = this.state.todoItems.findIndex((todo) => { return todo.id === +id });
+    let todoObj = this.state.todoItems[todoIndex];
+    // Could also use Object.assign()
+    let updatedTodo = {
+      ...todoObj,
+      done: !todoObj.done
+    };
 
+    let newTodoItems = [
+      ...this.state.todoItems.slice(0, todoIndex),
+      updatedTodo,
+      ...this.state.todoItems.slice(todoIndex + 1)
+    ];
+    
+    this.setState({
+      todoItems: newTodoItems
+    });
+    
+    console.log(newTodoItems);
   }
 
   toggleVisibleItems(visibileItems) {
 
   }
 
-
-
   render() {
     return (
       <section className="todo-app">
         <HeaderContainer addTodo={this.addTodo} />
-        <TodoListContainer todoItems={this.state.todoItems} />
+        <TodoListContainer todoItems={this.state.todoItems} toggleTodoItem={this.toggleTodoItem} />
         <TodoFiltersContainer />
       </section>
     )

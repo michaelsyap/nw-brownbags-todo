@@ -8,25 +8,42 @@ const TodoItem = (props) => {
   let listClasses = classnames(
     'list-group-item -todo-item',
     {
-      '-edit-mode': props.status
+      '-edit-mode': props.onEditMode
     }
   );
 
   let textContainerClasses = classnames(
     'text-container -todo-item',
     {
-      '-edit-mode': props.status
+      '-edit-mode': props.onEditMode
     }
   );
+
+  const setInputToFocus = (input) => {
+    if(input && props.onEditMode) {
+       input.focus(); 
+       input.setSelectionRange(input.value.length, input.value.length);
+    }
+  };
+
 
   return (
     <li className={listClasses}>
       <div className="checkbox-container">
-        <input type="checkbox" className="checkbox"/>
+        <input type="checkbox" className="checkbox" value={props.details.id} onChange={props.handleToggleTodo} checked={props.details.done} />
       </div>
       <div className={textContainerClasses}>
-        <span className="text">{props.details.text}</span>
-        <input type="text" className="form-control" value={props.details.text} />
+
+        <span className="text" onDoubleClick={()=> props.handleEditMode(props.details)}>{props.details.text}</span>
+
+        <input type="text" 
+          ref={setInputToFocus} 
+          className="form-control" 
+          value={props.todoText}
+          onChange={props.handleInputChange}
+          onKeyDown={props.handleKeyPress}
+          onBlur={props.handleEditBlur} />
+
       </div>
       <div className="actions -todo-item">
         <button className="btn btn-danger"><i className="fa fa-trash"></i></button>
@@ -35,9 +52,9 @@ const TodoItem = (props) => {
   )
 };
 
-
 TodoItem.propTypes = {
-  status: PropTypes.string
+  status: PropTypes.string,
+  value: PropTypes.object
 };
 
 

@@ -1,12 +1,19 @@
 import React from 'react';
 import './TodoList.css';
-import TodoItem from 'Components/TodoItem/TodoItem';
+import TodoItemContainer from 'Containers/TodoItemContainer/TodoItemContainer';
 
 // <TodoItem status="edit" />
 const TodoList = (props) => {
-  console.log(props.todoItems);
+  console.log(props);
+  
   var todos = props.todoItems.map((todo) => {
-    return <TodoItem key={todo.id.toString()} details={todo} />
+    return <TodoItemContainer 
+              key={todo.id.toString()} 
+              details={todo}
+              handleToggleTodo={props.handleToggleTodo}
+              handleEditMode={props.handleEditMode}
+              onEditMode={props.onEditMode === todo.id}
+               />
   })
 
 

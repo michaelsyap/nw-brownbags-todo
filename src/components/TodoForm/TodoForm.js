@@ -12,7 +12,7 @@ const TodoForm = (props) => {
       <div className="card-body">
         <form onSubmit={props.handleSubmit}>
           <div className="form-group">
-            <input type="text" className="form-control" value={props.todoText} onKeyPress={props.handleKeypress} onChange={props.handleChange} aria-describedby="emailHelp" placeholder="Reserve a table in the restaurant.." />
+            <input type="text" className="form-control"  onChange={props.handleChange} placeholder="Reserve a table in the restaurant.." />
           </div>
           <button type="submit" className="btn btn-success float-right">Submit</button>
         </form>

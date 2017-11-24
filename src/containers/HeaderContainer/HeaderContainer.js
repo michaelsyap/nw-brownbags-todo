@@ -18,7 +18,7 @@ class HeaderContainer extends Component {
     let todo = {
       id: Date.now(),
       text: todoItem.todoText,
-      status: 'pending'
+      done: false
     };
 
     this.props.addTodo(todo);
