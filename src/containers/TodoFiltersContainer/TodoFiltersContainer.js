@@ -11,7 +11,10 @@ class TodoFilterContainer extends Component {
 
   render() {
     return (
-      <TodoFilters />
+      <TodoFilters 
+        visibleItems={this.props.visibleItems} 
+        handleVisibleItems={this.props.handleVisibleItems}
+        />
     )
   }
 }

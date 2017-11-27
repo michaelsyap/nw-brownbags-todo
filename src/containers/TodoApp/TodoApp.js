@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import HeaderContainer from 'Containers/HeaderContainer/HeaderContainer';
 import TodoListContainer from 'Containers/TodoListContainer/TodoListContainer';
-import TodoFiltersContainer from 'Containers/TodoFiltersContainer/TodoFiltersContainer';
 
 
 class TodoApp extends Component {
@@ -18,7 +17,7 @@ class TodoApp extends Component {
         {
           id: 2,
           text: 'Call mom',
-          status: false
+          done: false
         },
         {
           id: 3,
@@ -35,15 +34,13 @@ class TodoApp extends Component {
           text: 'Prepare food for tomorrow',
           done: false
         }
-      ],
-      visibleItems: 'ALL' //all, pending, done
+      ]
     };
 
     this.addTodo = this.addTodo.bind(this);
     this.toggleTodoItem = this.toggleTodoItem.bind(this);
     this.editTodoText = this.editTodoText.bind(this);
     this.deleteTodoItem = this.deleteTodoItem.bind(this);
-    // this.toggleVisibleItems = this.toggleVisibleItems.bind(this);
   }
 
   addTodo(todo) {
@@ -103,9 +100,6 @@ class TodoApp extends Component {
     this.setState({todoItems: newTodoItems});
   }
 
-  toggleVisibleItems(visibileItems) {
-
-  }
 
   render() {
     return (
@@ -117,7 +111,6 @@ class TodoApp extends Component {
           editTodoText={this.editTodoText}
           deleteTodoItem={this.deleteTodoItem}
            />
-        <TodoFiltersContainer />
       </section>
     )
   }

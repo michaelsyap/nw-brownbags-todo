@@ -1,6 +1,7 @@
 import React from 'react';
 import './TodoList.css';
 import TodoItemContainer from 'Containers/TodoItemContainer/TodoItemContainer';
+import TodoFilters from 'Components/TodoFilters/TodoFilters';
 
 // <TodoItem status="edit" />
 const TodoList = (props) => {
@@ -16,7 +17,7 @@ const TodoList = (props) => {
               onEditMode={props.onEditMode === todo.id}
               handleDeleteTodo={props.handleDeleteTodo}
                />
-  })
+  });
 
 
   return (
@@ -26,6 +27,10 @@ const TodoList = (props) => {
           {todos}
         </ul>
       </div>
+      <TodoFilters 
+        visibleItems={props.visibleItems} 
+        handleVisibleItems={props.handleVisibleItems}
+        />
     </section>
   );
 };
