@@ -11,6 +11,7 @@ class TodoListContainer extends Component {
 
     this.handleToggleTodo = this.handleToggleTodo.bind(this);
     this.handleEditMode = this.handleEditMode.bind(this);
+    this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
   }
 
   handleToggleTodo(e) {
@@ -29,6 +30,11 @@ class TodoListContainer extends Component {
     });
   }
 
+  handleDeleteTodo(todo) {
+    this.props.deleteTodoItem(todo.id);
+    console.log(todo);
+  }
+
   render() {
     return (
       <TodoList 
@@ -37,6 +43,7 @@ class TodoListContainer extends Component {
         handleToggleTodo={this.handleToggleTodo} 
         onEditMode={this.state.onEditMode}  
         handleEditMode={this.handleEditMode}
+        handleDeleteTodo={this.handleDeleteTodo}
         />
     )
   }

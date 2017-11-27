@@ -14,6 +14,7 @@ const TodoList = (props) => {
               handleEditMode={props.handleEditMode}
               editTodoText={props.editTodoText}
               onEditMode={props.onEditMode === todo.id}
+              handleDeleteTodo={props.handleDeleteTodo}
                />
   })
 

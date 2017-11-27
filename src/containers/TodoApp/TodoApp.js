@@ -42,6 +42,7 @@ class TodoApp extends Component {
     this.addTodo = this.addTodo.bind(this);
     this.toggleTodoItem = this.toggleTodoItem.bind(this);
     this.editTodoText = this.editTodoText.bind(this);
+    this.deleteTodoItem = this.deleteTodoItem.bind(this);
     // this.toggleVisibleItems = this.toggleVisibleItems.bind(this);
   }
 
@@ -92,10 +93,14 @@ class TodoApp extends Component {
       todoItems: newTodoItems
     });
     
-    console.log(newTodoItems);
-    
+    console.log(newTodoItems);    
 
+  }
 
+  deleteTodoItem(id) {
+    let newTodoItems = this.state.todoItems.filter((todo) => todo.id !== id);
+
+    this.setState({todoItems: newTodoItems});
   }
 
   toggleVisibleItems(visibileItems) {
@@ -109,7 +114,9 @@ class TodoApp extends Component {
         <TodoListContainer 
           todoItems={this.state.todoItems} 
           toggleTodoItem={this.toggleTodoItem}
-          editTodoText={this.editTodoText} />
+          editTodoText={this.editTodoText}
+          deleteTodoItem={this.deleteTodoItem}
+           />
         <TodoFiltersContainer />
       </section>
     )
