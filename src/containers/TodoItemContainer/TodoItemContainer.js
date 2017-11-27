@@ -18,7 +18,7 @@ class TodoItemContainer extends Component {
   handleKeyPress(e) {
     console.log(e.keyCode);
 
-    if(e.keyCode === 13) {
+    if(e.keyCode === 13 && e.target.value.length > 0) {
       console.log('Save');
 
       this.props.editTodoText({
@@ -28,7 +28,7 @@ class TodoItemContainer extends Component {
 
      this.props.handleEditMode();
 
-    } else if (e.keyCode === 27) {
+    } else if ((e.keyCode === 13 && e.target.value.length === 0) || e.keyCode === 27) {
 
       this.handleEditBlur();
     }

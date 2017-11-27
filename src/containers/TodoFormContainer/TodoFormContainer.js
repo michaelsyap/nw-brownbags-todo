@@ -27,15 +27,20 @@ class TodoFormContainer extends Component {
     console.log('Submitting...');
     console.log(this.state);
 
-    this.props.addTodoProxy({
-      todoText: this.state.todoText
-    });
+    if(this.state.todoText.length > 0) {
 
-    e.target.reset();
-    this.setState({
-      todoText: ''
-    });
-
+      this.props.addTodoProxy({
+        todoText: this.state.todoText
+      });
+  
+      e.target.reset();
+      this.setState({
+        todoText: ''
+      });
+  
+    } else {
+      alert('Please put description for your to do item.');
+    }
 
 
     e.preventDefault();
