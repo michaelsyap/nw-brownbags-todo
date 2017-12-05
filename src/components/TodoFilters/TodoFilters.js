@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './TodoFilters.css';
 
@@ -34,5 +35,12 @@ const TodoFilters = (props) => (
     </div>
   </section>
 );
+
+
+TodoFilters.propTypes = {
+  visibleItems: PropTypes.string,
+  handleVisibleItems: PropTypes.func
+};
+
 
 export default TodoFilters;

@@ -6,8 +6,7 @@ class HeaderContainer extends Component {
     super(props);
 
     this.state = {
-      todoFormOpen: false,
-      todoText: ''
+      todoFormOpen: false
     };
 
     this.addTodoProxy = this.addTodoProxy.bind(this);
@@ -29,10 +28,8 @@ class HeaderContainer extends Component {
     this.setState({
       todoFormOpen: !this.state.todoFormOpen
     });
-
   }
   
-
   render() {
     return (
       <Header 

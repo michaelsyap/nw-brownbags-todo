@@ -15,6 +15,7 @@ class TodoItemContainer extends Component {
     this.handleEditBlur = this.handleEditBlur.bind(this);
   }
 
+  // Track the keycodes of the keypresses of the user
   handleKeyPress(e) {
     console.log(e.keyCode);
 
@@ -34,6 +35,7 @@ class TodoItemContainer extends Component {
     }
   }
 
+  // Save to state all changes to the todo item text being edited
   handleInputChange(e) {
 
     this.setState({
@@ -42,6 +44,7 @@ class TodoItemContainer extends Component {
 
   }
 
+  // When user leaves focus on editing the input field
   handleEditBlur(e) {
 
     this.setState({

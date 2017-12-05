@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Header.css';
 import classnames from 'classnames';
 
@@ -28,6 +29,13 @@ const Header = (props) => {
       </div>
     </header>
   );
+};
+
+
+Header.propTypes = {
+  todoFormOpen: PropTypes.bool,
+  openTodoForm: PropTypes.func,
+  addTodoProxy: PropTypes.func
 };
 
 export default Header;

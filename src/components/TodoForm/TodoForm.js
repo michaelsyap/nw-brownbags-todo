@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './TodoForm.css';
 import classnames from 'classnames';
 
@@ -21,4 +22,12 @@ const TodoForm = (props) => {
   );
 };
 
+TodoForm.propTypes = {
+  isOpen: PropTypes.bool,
+  handleSubmit: PropTypes.func,
+  handleChange: PropTypes.func
+};
+
 export default TodoForm;
+
+

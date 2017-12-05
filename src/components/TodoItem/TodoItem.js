@@ -20,9 +20,12 @@ const TodoItem = (props) => {
   );
 
   const setInputToFocus = (input) => {
+
+
     if(input && props.onEditMode) {
-       input.focus(); 
-       input.setSelectionRange(input.value.length, input.value.length);
+      console.log(input);
+      input.focus(); 
+      input.setSelectionRange(input.value.length, input.value.length);
     }
   };
 
@@ -54,7 +57,15 @@ const TodoItem = (props) => {
 
 TodoItem.propTypes = {
   status: PropTypes.string,
-  value: PropTypes.object
+  value: PropTypes.object,
+  details: PropTypes.object,
+  handleToggleTodo: PropTypes.func,
+  handleEditMode: PropTypes.func,
+  handleDeleteTodo: PropTypes.func,
+  handleInputChange: PropTypes.func,
+  handleKeyPress: PropTypes.func,
+  handleEditBlur: PropTypes.func,
+  todoText: PropTypes.string
 };
 
 

@@ -52,7 +52,6 @@ class TodoListContainer extends Component {
 
     const visibleItems = this.state.visibleItems;
 
-
     if(visibleItems === 'PENDING') {
       return this.props.todoItems.filter(todo => !todo.done);
     } else if (visibleItems === 'DONE') {
@@ -73,7 +72,7 @@ class TodoListContainer extends Component {
         todoItems={filteredVisibleItems}
         editTodoText={this.props.editTodoText}
         handleToggleTodo={this.handleToggleTodo} 
-        onEditMode={this.state.onEditMode}  
+        onEditMode={this.state.onEditMode}
         handleEditMode={this.handleEditMode}
         handleDeleteTodo={this.handleDeleteTodo}
         handleVisibleItems={this.handleVisibleItems}
