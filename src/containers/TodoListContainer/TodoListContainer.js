@@ -8,7 +8,6 @@ class TodoListContainer extends Component {
     this.state = {
       onEditMode: null,
       visibleItems: 'ALL', //all, pending, done
-      todoItems: props.todoItems
     };
 
     this.handleToggleTodo = this.handleToggleTodo.bind(this);
