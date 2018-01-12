@@ -78,8 +78,11 @@ class TodoApp extends Component {
   }
 
   editTodoText(newTodo) {
+    // Returns in the index of the item being looked for in the array
     let todoIndex = this.state.todoItems.findIndex((todo) => { return todo.id === newTodo.id });
 
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+    // end - Zero-based index before which to end extraction. slice extracts up to but not including end.
     let newTodoItems = [
       ...this.state.todoItems.slice(0, todoIndex),
       newTodo,
