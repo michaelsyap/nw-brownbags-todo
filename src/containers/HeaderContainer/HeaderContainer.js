@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import Header from 'Components/Header/Header';
 
-class HeaderContainer extends Component {
+import { connect } from 'react-redux';
+
+class HeaderContainerComp extends Component {
   constructor(props) {
     super(props);
 
@@ -39,5 +41,18 @@ class HeaderContainer extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    
+  }
+};
+
+const mapDispatchToProps = (state) => {
+  return {}
+};
+
+
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderContainerComp);
 
 export default HeaderContainer;
