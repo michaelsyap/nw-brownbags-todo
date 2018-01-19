@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Header from 'Components/Header/Header';
-
+import { addTodo } from 'Actions';
 import { connect } from 'react-redux';
 
-class HeaderContainerComp extends Component {
+class HeaderContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -42,17 +42,5 @@ class HeaderContainerComp extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    
-  }
-};
-
-const mapDispatchToProps = (state) => {
-  return {}
-};
-
-
-const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderContainerComp);
 
 export default HeaderContainer;

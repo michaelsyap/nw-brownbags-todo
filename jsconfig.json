@@ -8,6 +8,7 @@
           "Components/*" : ["src/components/*"],
           "Containers/*" : ["src/containers/*"],
           "Actions/*" : ["src/actions/*"] ,
+          "Stores/*" : ["src/stores/*"] ,
           "Reducers/*" : ["src/reducers/*"]     // resolve any `~/foo/bar` to `<baseUrl>/foo/bar`
       }
   },

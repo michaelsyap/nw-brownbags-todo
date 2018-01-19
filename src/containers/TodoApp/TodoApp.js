@@ -107,7 +107,7 @@ class TodoApp extends Component {
   render() {
     return (
       <section className="todo-app">
-        <HeaderContainer addTodo={this.addTodo} />
+        <HeaderContainer />
         <TodoListContainer 
           todoItems={this.state.todoItems} 
           toggleTodoItem={this.toggleTodoItem}
