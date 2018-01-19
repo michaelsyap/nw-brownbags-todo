@@ -38,11 +38,7 @@ class TodoFormContainerComp extends Component {
 
     if(this.state.todoText.length > 0) {
 
-      this.props.onAddTodo({
-        id: Date.now(),
-        text: this.state.todoText,
-        done: false
-      });
+      this.props.onAddTodo(this.state.todoText);
   
       e.target.reset();
       this.setState({
@@ -77,8 +73,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddTodo: (todo) => {
-      dispatch(addTodo(todo));
+    onAddTodo: (text) => {
+      dispatch(addTodo(text));
     }
   }
 };

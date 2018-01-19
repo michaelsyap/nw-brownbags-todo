@@ -11,18 +11,7 @@ class HeaderContainer extends Component {
       todoFormOpen: false
     };
 
-    this.addTodoProxy = this.addTodoProxy.bind(this);
     this.openTodoForm = this.openTodoForm.bind(this);
-  }
-
-  addTodoProxy(todoItem) {
-    let todo = {
-      id: Date.now(),
-      text: todoItem.todoText,
-      done: false
-    };
-
-    this.props.addTodo(todo);
   }
 
   openTodoForm() {

@@ -108,12 +108,12 @@ class TodoApp extends Component {
     return (
       <section className="todo-app">
         <HeaderContainer />
-        <TodoListContainer 
+        {/* <TodoListContainer 
           todoItems={this.state.todoItems} 
           toggleTodoItem={this.toggleTodoItem}
           editTodoText={this.editTodoText}
           deleteTodoItem={this.deleteTodoItem}
-           />
+           /> */}
       </section>
     )
   }
