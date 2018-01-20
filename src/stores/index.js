@@ -29,7 +29,10 @@ const store = createStore(todoAppReducers,
                                 text: 'Prepare food for tomorrow',
                                 done: false
                               }
-                            ]
+                            ],
+                            todoAppUI: {
+                              activeEditItem: 0
+                            }
                           },
                           window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

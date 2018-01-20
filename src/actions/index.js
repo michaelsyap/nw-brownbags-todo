@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO_STATUS } from 'Actions/actionTypes';
+import { ADD_TODO, TOGGLE_TODO_STATUS, SET_ACTIVE_TODO_EDITING } from 'Actions/actionTypes';
 
 let nextTodoId = () => {
   return Date.now();
@@ -18,3 +18,11 @@ export const toggleTodo = id => {
     id
   }
 };
+
+
+export const setActiveTodoEdit = id => {
+  return {
+    type: SET_ACTIVE_TODO_EDITING,
+    id
+  }
+}

@@ -8,21 +8,20 @@ const TodoItem = (props) => {
   let listClasses = classnames(
     'list-group-item -todo-item',
     {
-      '-edit-mode': props.onEditMode
+      '-edit-mode': props.onEditMode === props.details.id
     }
   );
 
   let textContainerClasses = classnames(
     'text-container -todo-item',
     {
-      '-edit-mode': props.onEditMode
+      '-edit-mode': props.onEditMode === props.details.id
     }
   );
 
   const setInputToFocus = (input) => {
 
-
-    if(input && props.onEditMode) {
+    if(input && props.onEditMode === props.details.id) {
       console.log(input);
       input.focus(); 
       input.setSelectionRange(input.value.length, input.value.length);

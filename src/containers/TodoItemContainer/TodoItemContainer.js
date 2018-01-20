@@ -3,23 +3,41 @@ import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import TodoItem from 'Components/TodoItem/TodoItem';
 
-import { toggleTodo } from 'Actions';
+import { toggleTodo, setActiveTodoEdit } from 'Actions';
 
 class TodoItemContainerComp extends Component {
   constructor(props) {
     super(props);
-
-    console.log(props);
 
     this.state = {
       todoText: props.details.text,
       todoDone: props.details.done
     };
 
+    this.handleEditMode = this.handleEditMode.bind(this);
     this.handleToggleTodo = this.handleToggleTodo.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleEditBlur = this.handleEditBlur.bind(this);
+  }
+
+  handleEditMode(todo) {
+    let id = todo ? todo.id : 0;
+
+    console.log(id);
+
+    this.props.onTriggerToEdit(id);
+  }
+
+
+  // When user leaves focus on editing the input field
+  handleEditBlur(e) {
+
+    this.setState({
+      todoText: this.props.details.text
+    });
+
+    this.handleEditMode();
   }
 
   // Track the keycodes of the keypresses of the user
@@ -34,7 +52,7 @@ class TodoItemContainerComp extends Component {
         text: e.target.value
       });
 
-     this.props.handleEditMode();
+     this.handleEditMode();
 
     } else if ((e.keyCode === 13 && e.target.value.length === 0) || e.keyCode === 27) {
 
@@ -52,7 +70,6 @@ class TodoItemContainerComp extends Component {
 
   }
 
-  
   handleToggleTodo(e) {
     let id = e.target.value;
 
@@ -63,25 +80,22 @@ class TodoItemContainerComp extends Component {
     this.props.onToggleTodo(id);
   }
 
-  // When user leaves focus on editing the input field
-  handleEditBlur(e) {
-
-    this.setState({
-      todoText: this.props.details.text
-    });
-
-    this.props.handleEditMode();
-  }
 
   render() {
 
+
+    console.log(this.props);
+
+
     return (
       <TodoItem 
-        {...this.props}
+        details={this.props.details}
         handleToggleTodo={this.handleToggleTodo}
         handleEditBlur={this.handleEditBlur}
         handleInputChange={this.handleInputChange}
         handleKeyPress={this.handleKeyPress}
+        handleEditMode={this.handleEditMode}
+        onEditMode={this.props.todoAppUI.activeEditItem}
         todoText={this.state.todoText}
         todoDone={this.state.todoDone}
         />
@@ -90,18 +104,25 @@ class TodoItemContainerComp extends Component {
   }
 }
 
-
+const mapStateToProps = (state) => {
+  return {
+    todoAppUI: state.todoAppUI
+  }
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onToggleTodo: (id) => {
       return dispatch(toggleTodo(id))
+    },
+    onTriggerToEdit: (id) => {
+      return dispatch(setActiveTodoEdit(id))
     }
   }
 };
 
 
-const TodoItemContainer = connect(null, mapDispatchToProps)(TodoItemContainerComp);
+const TodoItemContainer = connect(mapStateToProps, mapDispatchToProps)(TodoItemContainerComp);
 
 
 export default TodoItemContainer;
