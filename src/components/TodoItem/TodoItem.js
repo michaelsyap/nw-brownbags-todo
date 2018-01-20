@@ -33,7 +33,7 @@ const TodoItem = (props) => {
   return (
     <li className={listClasses}>
       <div className="checkbox-container">
-        <input type="checkbox" className="checkbox" value={props.details.id} onChange={props.handleToggleTodo} checked={props.details.done} />
+        <input type="checkbox" className="checkbox" value={props.details.id} onChange={props.handleToggleTodo} checked={props.todoDone} />
       </div>
       <div className={textContainerClasses}>
 

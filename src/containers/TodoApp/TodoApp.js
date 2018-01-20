@@ -37,22 +37,9 @@ class TodoApp extends Component {
       ]
     };
 
-    this.addTodo = this.addTodo.bind(this);
     this.toggleTodoItem = this.toggleTodoItem.bind(this);
     this.editTodoText = this.editTodoText.bind(this);
     this.deleteTodoItem = this.deleteTodoItem.bind(this);
-  }
-
-  addTodo(todo) {
-    let todoItems = [
-      todo,
-      ...this.state.todoItems
-    ];
-    
-
-    console.log(todoItems);
-
-    this.setState({ todoItems });
   }
 
   toggleTodoItem(id) {
@@ -108,12 +95,10 @@ class TodoApp extends Component {
     return (
       <section className="todo-app">
         <HeaderContainer />
-        {/* <TodoListContainer 
-          todoItems={this.state.todoItems} 
-          toggleTodoItem={this.toggleTodoItem}
+        <TodoListContainer 
           editTodoText={this.editTodoText}
           deleteTodoItem={this.deleteTodoItem}
-           /> */}
+           />
       </section>
     )
   }

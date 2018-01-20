@@ -1,15 +1,22 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import TodoItem from 'Components/TodoItem/TodoItem';
 
-class TodoItemContainer extends Component {
+import { toggleTodo } from 'Actions';
+
+class TodoItemContainerComp extends Component {
   constructor(props) {
     super(props);
 
+    console.log(props);
+
     this.state = {
-      todoText: props.details.text
+      todoText: props.details.text,
+      todoDone: props.details.done
     };
 
+    this.handleToggleTodo = this.handleToggleTodo.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleEditBlur = this.handleEditBlur.bind(this);
@@ -34,6 +41,7 @@ class TodoItemContainer extends Component {
       this.handleEditBlur();
     }
   }
+  
 
   // Save to state all changes to the todo item text being edited
   handleInputChange(e) {
@@ -42,6 +50,17 @@ class TodoItemContainer extends Component {
       todoText: e.target.value
     });
 
+  }
+
+  
+  handleToggleTodo(e) {
+    let id = e.target.value;
+
+    this.setState({
+      todoDone: !this.state.todoDone
+    });
+    
+    this.props.onToggleTodo(id);
   }
 
   // When user leaves focus on editing the input field
@@ -59,15 +78,30 @@ class TodoItemContainer extends Component {
     return (
       <TodoItem 
         {...this.props}
+        handleToggleTodo={this.handleToggleTodo}
         handleEditBlur={this.handleEditBlur}
         handleInputChange={this.handleInputChange}
         handleKeyPress={this.handleKeyPress}
         todoText={this.state.todoText}
+        todoDone={this.state.todoDone}
         />
     )
 
   }
 }
+
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onToggleTodo: (id) => {
+      return dispatch(toggleTodo(id))
+    }
+  }
+};
+
+
+const TodoItemContainer = connect(null, mapDispatchToProps)(TodoItemContainerComp);
 
 
 export default TodoItemContainer;

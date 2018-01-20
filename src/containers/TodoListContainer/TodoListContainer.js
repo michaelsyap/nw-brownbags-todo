@@ -10,15 +10,10 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {}
-};
-
-
 
 const TodoListContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(TodoList);
 
 

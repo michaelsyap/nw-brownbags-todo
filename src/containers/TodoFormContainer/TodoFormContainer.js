@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddTodo: (text) => {
-      dispatch(addTodo(text));
+      return dispatch(addTodo(text));
     }
   }
 };

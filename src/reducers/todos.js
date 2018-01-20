@@ -1,4 +1,29 @@
-import { ADD_TODO } from 'Actions/actionTypes';
+import { ADD_TODO, TOGGLE_TODO_STATUS } from 'Actions/actionTypes';
+
+
+const toggleTodoItem = (state, id) => {
+  console.log(state, id);
+  
+  const index = state.findIndex((todo) => {
+    return todo.id === parseInt(id);
+  });
+
+  const todo = state[index];
+
+  const modifiedTodo = {
+    ...todo,
+    done: !todo.done
+  };
+
+
+
+  return [
+    ...state.slice(0, index),
+    modifiedTodo,
+    ...state.slice(index + 1)
+  ]
+}
+
 
 const todos = (state = [], action) => {
   switch(action.type) {
@@ -8,9 +33,11 @@ const todos = (state = [], action) => {
         {
           id: action.id,
           text: action.text,
-          completed: false
+          done: false
         }
       ]
+    case TOGGLE_TODO_STATUS:
+      return toggleTodoItem(state, action.id)
     default:
       return state
   }
