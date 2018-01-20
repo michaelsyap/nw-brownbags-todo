@@ -1,0 +1,11 @@
+.app-header {
+  
+}
+
+.app-header > .container {
+  max-width: 500px;
+}
+
+.container.-app-header > .navbar{
+  margin-bottom: 15px;
+}

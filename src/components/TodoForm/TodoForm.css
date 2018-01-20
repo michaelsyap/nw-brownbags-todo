@@ -1,0 +1,7 @@
+.card.form-card {
+  display: none;
+}
+
+.form-card.-active {
+  display: flex;
+}
