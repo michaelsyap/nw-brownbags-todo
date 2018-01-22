@@ -38,7 +38,7 @@ const TodoItem = (props) => {
 
         <span className="text" onDoubleClick={()=> props.handleEditMode(props.details)}>{props.details.text}</span>
 
-        <input type="text" 
+        <input type="text"
           ref={setInputToFocus} 
           className="form-control" 
           value={props.todoText}
@@ -53,6 +53,7 @@ const TodoItem = (props) => {
     </li>
   )
 };
+
 
 TodoItem.propTypes = {
   status: PropTypes.string,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import TodoItem from 'Components/TodoItem/TodoItem';
 
-import { toggleTodo, setActiveTodoEdit, deleteTodo } from 'Actions/index';
+import { toggleTodo, setActiveTodoEdit, deleteTodo, updateTodo } from 'Actions/index';
 
 class TodoItemContainerComp extends Component {
   constructor(props) {
@@ -47,12 +47,9 @@ class TodoItemContainerComp extends Component {
     if(e.keyCode === 13 && e.target.value.length > 0) {
       console.log('Save');
 
-      this.props.editTodoText({
-        ...this.props.details,
-        text: e.target.value
-      });
+      this.props.onTriggerUpdateTodo(this.props.details.id, e.target.value);
 
-     this.handleEditMode();
+      this.handleEditMode();
 
     } else if ((e.keyCode === 13 && e.target.value.length === 0) || e.keyCode === 27) {
 
@@ -121,6 +118,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onTriggerDelete: (id) => {
       return dispatch(deleteTodo(id))
+    },
+    onTriggerUpdateTodo: (id, text) => {
+      return dispatch(updateTodo(id, text));
     }
   }
 };

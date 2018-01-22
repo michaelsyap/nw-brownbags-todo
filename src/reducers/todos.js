@@ -16,6 +16,28 @@ const deleteTodo = (state, id) => {
 
 }
 
+const updateTodoItem = (state, action) => {
+  console.log(action);
+
+  const index = state.findIndex((todo) => {
+    return todo.id === parseInt(action.id);
+  });
+
+  const todo = state[index];
+
+  const modifiedTodo = {
+    ...todo,
+    text: action.text
+  };
+
+  return [
+    ...state.slice(0, index),
+    modifiedTodo,
+    ...state.slice(index + 1)
+  ]
+  
+};
+
 const toggleTodoItem = (state, id) => {
   console.log(state, id);
   
@@ -54,7 +76,7 @@ const todos = (state = [], action) => {
     case TOGGLE_TODO_STATUS:
       return toggleTodoItem(state, action.id);
     case UPDATE_TODO:
-      return []
+      return updateTodoItem(state, action)
     case DELETE_TODO: 
       return deleteTodo(state, action.id)
     default:
