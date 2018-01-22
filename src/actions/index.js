@@ -4,7 +4,8 @@ import {
           TOGGLE_TODO_FORM,
           SET_ACTIVE_TODO_EDITING,
           UPDATE_TODO,
-          DELETE_TODO
+          DELETE_TODO,
+          SET_TODO_FILTERS
         } from 'Actions/actionTypes';
 
 let nextTodoId = () => {
@@ -54,3 +55,11 @@ export const deleteTodo = (id) => {
     id
   }
 };
+
+export const setTodoFilter = (filter) => {
+  return {
+    type: SET_TODO_FILTERS,
+    filter
+  }
+}
+

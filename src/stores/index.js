@@ -22,7 +22,7 @@ const store = createStore(todoAppReducers,
                               {
                                 id: 4,
                                 text: 'Wash dishes',
-                                status: false
+                                done: false
                               },
                               {
                                 id: 5,
@@ -32,7 +32,8 @@ const store = createStore(todoAppReducers,
                             ],
                             todoAppUI: {
                               activeEditItem: 0,
-                              todoFormOpen: false
+                              todoFormOpen: false,
+                              activeFilter: 'ALL'
                             }
                           },
                           window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

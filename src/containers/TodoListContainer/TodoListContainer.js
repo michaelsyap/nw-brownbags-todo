@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
   return {
-    todoItems: state.todos
+    todoItems: state.todos,
+    todoAppUI: state.todoAppUI
   }
 };
 

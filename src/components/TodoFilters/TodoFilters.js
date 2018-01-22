@@ -37,10 +37,4 @@ const TodoFilters = (props) => (
 );
 
 
-TodoFilters.propTypes = {
-  visibleItems: PropTypes.string,
-  handleVisibleItems: PropTypes.func
-};
-
-
 export default TodoFilters;

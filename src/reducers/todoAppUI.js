@@ -1,4 +1,4 @@
-import { SET_ACTIVE_TODO_EDITING, TOGGLE_TODO_FORM } from 'Actions/actionTypes';
+import { SET_ACTIVE_TODO_EDITING, TOGGLE_TODO_FORM, SET_TODO_FILTERS } from 'Actions/actionTypes';
 
 const todoAppUI = (state = {}, action) => {
   switch(action.type) {
@@ -11,6 +11,12 @@ const todoAppUI = (state = {}, action) => {
       return {
         ...state,
         activeEditItem: action.id
+      }
+    
+    case SET_TODO_FILTERS :
+      return {
+        ...state,
+        activeFilter: action.filter
       }
     default: 
       return state
