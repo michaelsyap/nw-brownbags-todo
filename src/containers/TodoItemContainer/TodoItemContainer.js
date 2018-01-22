@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import TodoItem from 'Components/TodoItem/TodoItem';
 
-import { toggleTodo, setActiveTodoEdit } from 'Actions';
+import { toggleTodo, setActiveTodoEdit, deleteTodo } from 'Actions/index';
 
 class TodoItemContainerComp extends Component {
   constructor(props) {
@@ -88,16 +88,17 @@ class TodoItemContainerComp extends Component {
 
 
     return (
-      <TodoItem 
+      <TodoItem
         details={this.props.details}
+        todoText={this.state.todoText}
+        todoDone={this.state.todoDone}
         handleToggleTodo={this.handleToggleTodo}
         handleEditBlur={this.handleEditBlur}
         handleInputChange={this.handleInputChange}
         handleKeyPress={this.handleKeyPress}
         handleEditMode={this.handleEditMode}
         onEditMode={this.props.todoAppUI.activeEditItem}
-        todoText={this.state.todoText}
-        todoDone={this.state.todoDone}
+        onTriggerDelete={this.props.onTriggerDelete}
         />
     )
 
@@ -117,6 +118,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onTriggerToEdit: (id) => {
       return dispatch(setActiveTodoEdit(id))
+    },
+    onTriggerDelete: (id) => {
+      return dispatch(deleteTodo(id))
     }
   }
 };

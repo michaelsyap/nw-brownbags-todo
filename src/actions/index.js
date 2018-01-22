@@ -2,7 +2,9 @@ import {
           ADD_TODO, 
           TOGGLE_TODO_STATUS,
           TOGGLE_TODO_FORM,
-          SET_ACTIVE_TODO_EDITING 
+          SET_ACTIVE_TODO_EDITING,
+          UPDATE_TODO,
+          DELETE_TODO
         } from 'Actions/actionTypes';
 
 let nextTodoId = () => {
@@ -37,3 +39,18 @@ export const setActiveTodoEdit = id => {
     id
   }
 }
+
+export const updateTodo = (id, text) => {
+  return {
+    type: UPDATE_TODO,
+    id,
+    text
+  }
+};
+
+export const deleteTodo = (id) => {
+  return {
+    type: DELETE_TODO,
+    id
+  }
+};

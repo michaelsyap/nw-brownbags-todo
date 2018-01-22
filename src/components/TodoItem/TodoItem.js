@@ -48,7 +48,7 @@ const TodoItem = (props) => {
 
       </div>
       <div className="actions -todo-item">
-        <button className="btn btn-danger" onClick={() => props.handleDeleteTodo(props.details)}><i className="fa fa-trash"></i></button>
+        <button className="btn btn-danger" onClick={() => props.onTriggerDelete(props.details.id)}><i className="fa fa-trash"></i></button>
       </div>
     </li>
   )
