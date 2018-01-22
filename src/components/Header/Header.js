@@ -34,8 +34,7 @@ const Header = (props) => {
 
 Header.propTypes = {
   todoFormOpen: PropTypes.bool,
-  openTodoForm: PropTypes.func,
-  addTodoProxy: PropTypes.func
+  openTodoForm: PropTypes.func
 };
 
 export default Header;
