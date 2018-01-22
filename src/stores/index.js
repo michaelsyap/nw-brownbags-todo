@@ -31,7 +31,8 @@ const store = createStore(todoAppReducers,
                               }
                             ],
                             todoAppUI: {
-                              activeEditItem: 0
+                              activeEditItem: 0,
+                              todoFormOpen: false
                             }
                           },
                           window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

@@ -1,35 +1,41 @@
 import React, {Component} from 'react';
 import Header from 'Components/Header/Header';
-import { addTodo } from 'Actions';
+import { toggleTodoForm } from 'Actions';
 import { connect } from 'react-redux';
 
-class HeaderContainer extends Component {
+class HeaderContainerComp extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      todoFormOpen: false
-    };
-
-    this.openTodoForm = this.openTodoForm.bind(this);
+    this.state = {};
   }
 
-  openTodoForm() {
-    console.log(this.state);
-    this.setState({
-      todoFormOpen: !this.state.todoFormOpen
-    });
-  }
   
   render() {
     return (
       <Header 
-        todoFormOpen={this.state.todoFormOpen} 
-        openTodoForm={this.openTodoForm} 
-        addTodoProxy={this.addTodoProxy} />
+        todoFormOpen={this.props.todoFormOpen} 
+        openTodoForm={this.props.openTodoForm}  />
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    todoFormOpen: state.todoAppUI.todoFormOpen
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openTodoForm: () => {
+      return dispatch(toggleTodoForm());
+    }
+  }
+};
+
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderContainerComp);
+
 
 
 export default HeaderContainer;
