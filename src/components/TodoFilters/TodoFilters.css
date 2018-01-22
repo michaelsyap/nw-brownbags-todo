@@ -1,0 +1,7 @@
+.btn-group.-todo-filters {
+  display: flex;
+}
+
+.btn-group.-todo-filters > .btn {
+  flex: 1;
+}

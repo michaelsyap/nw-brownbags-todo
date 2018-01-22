@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite the default settings
+{
+  "editor.wordWrap": "on",
+  "window.zoomLevel": 0,
+  "window.title": "${activeEditorMedium}${separator}${activeEditorShort}",
+  "files.associations": {
+    "*.css": "postcss",
+    "*.js": "javascriptreact"
+  }
+}
