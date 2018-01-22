@@ -12,8 +12,7 @@ const TodoList = (props) => {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
   var todos = props.todoItems
                 .filter((todo) => {
-                  console.log(todo);
-                  console.log(todo.done === true);
+                  
                   switch(activeFilter) {
                     case 'PENDING':
                       return todo.done === false
@@ -28,11 +27,7 @@ const TodoList = (props) => {
                   return <TodoItemContainer 
                             key={todo.id.toString()}
                             details={todo}
-                            handleToggleTodo={props.handleToggleTodo}
-                            handleEditMode={props.handleEditMode}
-                            editTodoText={props.editTodoText}
                             onEditMode={props.onEditMode === todo.id}
-                            handleDeleteTodo={props.handleDeleteTodo}
                              />
                 });
 
@@ -49,13 +44,7 @@ const TodoList = (props) => {
 };
 
 TodoList.propTypes = {
-  visibleItems: PropTypes.string,
-  handleVisibleItems: PropTypes.func,
-  handleToggleTodo: PropTypes.func,
-  handleEditMode: PropTypes.func,
-  editTodoText: PropTypes.func,
-  onEditMode: PropTypes.number,
-  handleDeleteTodo: PropTypes.func
+  details: PropTypes.object
 };
 
 
