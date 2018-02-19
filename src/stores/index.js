@@ -1,5 +1,13 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import todoAppReducers from 'Reducers';
+import thunk from 'redux-thunk';
+
+
+const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const middlewares = [
+  thunk
+];
 
 const store = createStore(todoAppReducers, 
                           {
@@ -32,11 +40,18 @@ const store = createStore(todoAppReducers,
                             ],
                             todoAppUI: {
                               activeEditItem: 0,
+                              activeFilter: 'ALL', //ALL, PENDING, DONE
                               todoFormOpen: false,
-                              activeFilter: 'ALL'
+                              // New todoAppUI Properties for async integration
+                              todoItemCreating: false,
+                              todoItemDeleting: 0,
+                              todoItemUpdating: 0,
+                              todoListFetching: false
                             }
                           },
-                          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+                          composeEnhancers(
+                            applyMiddleware(...middlewares)
+                          ));
 
 
 export default store;

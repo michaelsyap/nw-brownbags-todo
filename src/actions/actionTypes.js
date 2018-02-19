@@ -5,3 +5,6 @@ export const TOGGLE_TODO_STATUS = 'TOGGLE_TODO_STATUS';
 export const DELETE_TODO = 'DELETE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const SET_TODO_FILTERS = 'SET_TODO_FILTERS';
+
+// New actions for async 
+export const TODO_ITEM_CREATING = 'TODO_ITEM_CREATING';

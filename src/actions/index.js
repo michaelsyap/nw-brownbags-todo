@@ -5,11 +5,21 @@ import {
           SET_ACTIVE_TODO_EDITING,
           UPDATE_TODO,
           DELETE_TODO,
-          SET_TODO_FILTERS
+          SET_TODO_FILTERS,
+          TODO_ITEM_CREATING
         } from 'Actions/actionTypes';
+
+
+import firebase from 'Stores/firebase';
 
 let nextTodoId = () => {
   return Date.now();
+};
+
+export const setTodoCreationLoading = () => {
+  return {
+    type: TODO_ITEM_CREATING
+  }
 };
 
 export const toggleTodoForm = () => {
@@ -19,11 +29,30 @@ export const toggleTodoForm = () => {
 }
 
 export const addTodo = text => {
-  return {
-    type: ADD_TODO,
-    id: nextTodoId(),
-    text
+
+  return (dispatch) => {
+    dispatch(setTodoCreationLoading());
+
+    firebase.addTodo({
+      id: nextTodoId(),
+      done: false,
+      text
+    })
+    .then((result) => {
+
+      dispatch(setTodoCreationLoading());
+
+      dispatch({
+        type: ADD_TODO,
+        id: nextTodoId(),
+        text
+      });
+
+    });
+
   }
+
+  // return 
 }
 
 export const toggleTodo = id => {
