@@ -1,7 +1,9 @@
 import { ADD_TODO, 
           TOGGLE_TODO_STATUS, 
           UPDATE_TODO, 
-          DELETE_TODO } from 'Actions/actionTypes';
+          DELETE_TODO,
+          TODO_ITEMS_HYDRATE
+        } from 'Actions/actionTypes';
 
 
 const deleteTodo = (state, id) => {
@@ -64,6 +66,10 @@ const toggleTodoItem = (state, id) => {
 
 const todos = (state = [], action) => {
   switch(action.type) {
+    case TODO_ITEMS_HYDRATE:
+      return [
+        ...action.todos
+      ]
     case ADD_TODO:
       return [
         ...state,

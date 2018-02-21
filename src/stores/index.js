@@ -1,42 +1,35 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+
+import { fetchTodoItems, fetchInitUI } from 'Actions/index';
+
 import todoAppReducers from 'Reducers';
+import thunk from 'redux-thunk';
+
+
+const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const middlewares = [
+  thunk
+];
 
 const store = createStore(todoAppReducers, 
                           {
-                            todos: [
-                              {
-                                id: 1,
-                                text: 'Buy fruits at the market',
-                                done: false
-                              },
-                              {
-                                id: 2,
-                                text: 'Call mom',
-                                done: false
-                              },
-                              {
-                                id: 3,
-                                text: 'Finish assignment',
-                                done: true
-                              },
-                              {
-                                id: 4,
-                                text: 'Wash dishes',
-                                done: false
-                              },
-                              {
-                                id: 5,
-                                text: 'Prepare food for tomorrow',
-                                done: false
-                              }
-                            ],
+                            todos: [],
                             todoAppUI: {
                               activeEditItem: 0,
+                              activeFilter: "PENDING",
                               todoFormOpen: false,
-                              activeFilter: 'ALL'
+                              todoItemCreating: false,
+                              todoItemUpdating: 0,
+                              todoItemsFetching: false
                             }
                           },
-                          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+                          composeEnhancers(
+                            applyMiddleware(...middlewares)
+                          ));
 
+
+store.dispatch(fetchInitUI());
+store.dispatch(fetchTodoItems());
 
 export default store;

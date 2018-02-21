@@ -28,11 +28,10 @@ const TodoItem = (props) => {
     }
   };
 
-
   return (
     <li className={listClasses}>
       <div className="checkbox-container">
-        <input type="checkbox" className="checkbox" value={props.details.id} onChange={props.handleToggleTodo} checked={props.todoDone} />
+        <input type="checkbox" className="checkbox" value={props.details.id} onChange={() => props.handleToggleTodo(props.details)} checked={props.todoDone} disabled={props.isUpdating === props.details.id} />
       </div>
       <div className={textContainerClasses}>
 
@@ -44,12 +43,14 @@ const TodoItem = (props) => {
           value={props.todoText}
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyPress}
-          onBlur={props.handleEditBlur} />
+          onBlur={props.handleEditBlur} disabled={props.isUpdating === props.details.id} />
 
       </div>
       <div className="actions -todo-item">
-        <button className="btn btn-danger" onClick={() => props.onTriggerDelete(props.details.id)}><i className="fa fa-trash"></i></button>
+        <button className="btn btn-danger" onClick={() => props.onTriggerDelete(props.details)} disabled={props.isUpdating === props.details.id}><i className="fa fa-trash"></i></button>
       </div>
+
+      
     </li>
   )
 };

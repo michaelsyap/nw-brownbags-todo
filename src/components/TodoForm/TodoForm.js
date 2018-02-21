@@ -13,9 +13,10 @@ const TodoForm = (props) => {
       <div className="card-body">
         <form onSubmit={props.handleSubmit}>
           <div className="form-group">
-            <input type="text" className="form-control"  onChange={props.handleChange} placeholder="Reserve a table in the restaurant.." />
+            
+            <input type="text" className="form-control"  onChange={props.handleChange} placeholder="Reserve a table in the restaurant.."  disabled={props.isCreating} />
           </div>
-          <button type="submit" className="btn btn-success float-right">Submit</button>
+          <button type="submit" className="btn btn-success float-right" disabled={props.isCreating}>Submit</button>
         </form>
       </div>
     </div>

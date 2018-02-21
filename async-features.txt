@@ -1,0 +1,9 @@
+Async Integration to Firebase:
+
+- Fetch Data from Firebase
+- Add Data To Firebase
+- Edit Data To Firebase
+- Delete Data to Firebase
+- Sync Filter State to Firebase
+
+

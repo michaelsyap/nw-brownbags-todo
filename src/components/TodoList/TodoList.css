@@ -1,4 +1,20 @@
 .todo-list > .container {
   max-width: 500px;
   padding: 15px;
+  position: relative;
+}
+
+.todo-list > .container > .loading-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255,255,255,.8);
+}
+
+
+.loading-container > .text{
+  text-align: center;
+  padding: 100px 50px;
 }

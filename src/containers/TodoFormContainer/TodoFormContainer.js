@@ -59,6 +59,7 @@ class TodoFormContainerComp extends Component {
       isOpen={this.props.todoFormOpen} 
       handleSubmit={this.handleSubmit} 
       handleChange={this.handleChange}
+      isCreating={this.props.todoItemCreating}
       todoItem={this.state.todoItem} />
     )
   }
@@ -66,7 +67,7 @@ class TodoFormContainerComp extends Component {
 
 const mapStateToProps = (state) => {
   return {
-
+    todoItemCreating: state.todoAppUI.todoItemCreating
   }
 };
 
