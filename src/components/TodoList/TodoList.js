@@ -4,8 +4,6 @@ import './TodoList.css';
 import TodoItemContainer from 'Containers/TodoItemContainer/TodoItemContainer';
 
 const TodoList = (props) => {
-  console.log(props);
-  
   const activeFilter = props.todoAppUI.activeFilter;
 
   // Array.prototype.map
@@ -30,7 +28,7 @@ const TodoList = (props) => {
                             onEditMode={props.onEditMode === todo.id}
                              />
                 });
-
+  console.log(props.todoAppUI.todoItemsFetching);
 
   return (
     <section className="todo-list">
@@ -38,6 +36,15 @@ const TodoList = (props) => {
         <ul className="list-group">
           {todos}
         </ul>
+
+        {props.todoAppUI.todoItemsFetching ? 
+          (
+            <div className="loading-container">
+              <p className="text">Loading...</p>
+            </div>
+          ) 
+          : ''}
+        
       </div>
     </section>
   );
